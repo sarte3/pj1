@@ -1,0 +1,14 @@
+가상환경---
+파이썬 설치 C:\Python\Python37
+폴더생성 D:\study\test1
+# 사용할 파이썬으로 이동
+윈도우+r - cmd - cd C:\Python\Python37
+# 가상환경 생성
+python -m venv D:\study\test1
+# 가상환경 실행
+d:   #드라이브 이동
+cd D:\study\test1\Scripts
+activate.bat
+() 있으면 가상환경이 활성화 됨
+# 가상환경 종류
+deactivate.bat
