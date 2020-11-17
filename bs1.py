@@ -11,7 +11,7 @@ import requests
 # print(recvd.headers)
 
 
-from bs4 import BeautifulSoup
+from bs5 import BeautifulSoup
 # 웹페이지에 접근하여 태그 인식
 
 f = open('data\\test.html', encoding='utf-8').read()
