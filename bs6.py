@@ -11,11 +11,12 @@ with open('data\\movie.txt', 'w', encoding='utf-8') as f:
     for l in li:
         title = l.find('dt', class_='tit').find('a').text
         rating = l.find('div', class_='star_t1').find('span', class_='num').text
+        book = ''
 
         if l.find('div', class_='b_star') == None :
             book = ''
-            continue
-        book = l.find('div', class_='b_star').find('span', class_='num').text
+        else:
+            book = l.find('div', class_='b_star').find('span', class_='num').text
         runTime = l.find('dl', class_='info_txt1').find('span', class_='split').next_sibling
         runTime = runTime.strip()
         imgUrl = l.find('div', class_='thumb').find('img')['src']
