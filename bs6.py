@@ -85,6 +85,8 @@ def saveImg(imgUrl, title):
     # print(imgUrl.index('?'))
     # print(len(imgUrl))
     # print(imgUrl[79:83])
+    title = title.replace(':','')
+    title = title.replace(' ','')
     filename = 'img\\'+title+imgUrl[imgUrl.index('?')-4:imgUrl.index('?')]
     print(filename)
 

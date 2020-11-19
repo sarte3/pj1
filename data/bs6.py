@@ -1,6 +1,3 @@
-# https://hangouts.google.com/call/lpSk4LqZnbzP09dRtDlvACEM
-# 영화제목 점수 (예매율), (상영시간)을 추출하여 data\\movie.csv저장
-# 영화포스터는 img폴더에 저장
 # import requests
 # from bs4 import BeautifulSoup
 # url='https://movie.naver.com/movie/running/current.nhn'
@@ -44,6 +41,19 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+def saveImg(imgUrl,title):
+    # print(imgUrl)
+    # print(len(imgUrl))
+    # print(imgUrl.index('?'))
+    # print(imgUrl[:83])
+    # print(imgUrl[79:83])
+    # print(imgUrl[imgUrl.index('?')-4:imgUrl.index('?')])
+    title=title.replace(':','')
+    filename='img\\'+title+imgUrl[imgUrl.index('?')-4:imgUrl.index('?')]
+    print(filename)
+    r=requests.get(imgUrl)
+    with open(filename,'wb') as f1:
+        f1.write( r.content)
 with open(os.path.join('data','movies.csv'),'w',encoding='utf-8') as f:
     url='https://movie.naver.com/movie/running/current.nhn'
     recvd=requests.get(url)
@@ -53,6 +63,8 @@ with open(os.path.join('data','movies.csv'),'w',encoding='utf-8') as f:
     for li in lis:
         img=li.find('img')['src']
         title=li.find('dt',class_ ="tit").find('a').text
+        saveImg(img,title)
+        # break
         rating=li.find('span',class_="num").text
         reserv=li.find('div', class_="star_t1 b_star")
         if reserv==None :
@@ -71,11 +83,6 @@ with open(os.path.join('data','movies.csv'),'w',encoding='utf-8') as f:
                 break
         str='%s,%s,%s,%s\n'%(title,rating,temp,playtime)
         f.write(str)
-
-
-
-
-
 # json 문서
 # xml 문서
 # --------------------
