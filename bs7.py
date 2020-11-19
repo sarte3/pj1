@@ -83,6 +83,6 @@ with open('data\\blog.csv', 'w', encoding='utf-8') as f:
         for item in dic['items']:
             title = item['title']
             description = item['description']
-            str='{}::{}\n'.format(title, description)
+            str = '{}::{}\n'.format(title, description)
             print(str)
             f.write(str)
